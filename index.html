@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Идентификация</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-6 text-center border-3 border-end">
+        <div>Идентификация</div>
+      </div>
+      <div class="col-6 text-center border-3 border-start">
+        <a href="reg.html">Регистрация</a>
+      </div>
+      <div class="col-10 mx-auto border bg-light px-3 py-3 mt-3 rounded-2">
+        <form id="auth">
+          <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input type="text" class="form-control" id="login" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="password" pattern="[0-9]{10}" maxlength="10" required>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Войти</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="js/hi.js"></script>
+
+<script type="text/javascript">
+$(() => {
+      $("#auth").submit(async (e) => {
+          e.preventDefault();
+
+          let userData = {
+              login: $("#login").val(),
+              password: $("#password").val()
+          }
+          if (userData.password.length == 10) {
+              let response = await fetch('/search', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json;charset=utf-8'
+                  },
+                  body: JSON.stringify(userData)
+              })
+
+              if (response.ok) { // если HTTP-статус в диапазоне 200-299
+                  // получаем тело ответа (см. про этот метод ниже)
+                  let json = await response.json();
+                  console.log(json);
+                  if (json) {
+                      setCookie('user', json.login)
+                      setCookie('names', json.names)
+                      setCookie('birthCity', json.birthCity)
+                      setCookie('birthDate', json.birthDate)
+                      setCookie('number', json.number)
+                      alert(`${userData.login}, вы успешно авторизовались!`)
+                      location.replace("/cat.html")
+                  }
+              } else
+                  alert("Ошибка HTTP: " + response.status)
+          } else
+              alert("Проверьте правильность введеных данных. Пароль должен состоять из 10 символов.")
+      })
+  })
+</script>
+
+</html>

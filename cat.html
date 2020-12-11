@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Секретные фото котиков</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Cats</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Главная</a>
+            <a class="nav-link" href="settings.html" id="settingsBtn">Настройки</a>
+            <a class="nav-link" href="#" id="exitBtn">Выход</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="d-flex align-items-center pt-5">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="col-12 col-md-7 col-lg-5 mx-auto">
+            <div id="carouselExampleControls" class="carousel slide d-block" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="cats/1.png" class="d-block w-100 img-fluid" alt="Котик #1">
+                </div>
+                <div class="carousel-item">
+                  <img src="cats/2.png" class="d-block w-100 img-fluid" alt="Котик #2">
+                </div>
+                <div class="carousel-item">
+                  <img src="cats/3.png" class="d-block w-100 img-fluid" alt="Котик #3">
+                </div>
+                <div class="carousel-item">
+                  <img src="cats/4.png" class="d-block w-100 img-fluid" alt="Котик #4">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="js/hi.js"></script>
+<script type="text/javascript">
+$(() => {
+  $("#exitBtn").on('click', async (e) => {
+    e.preventDefault();
+    exit()
+  })
+})
+</script>
+
+</html>
